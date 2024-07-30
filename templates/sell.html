@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell</title>
+    <link rel="stylesheet" href="../static/css/sell.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="left">
+            <img src="../static/images/logo.jpg" alt="logo">
+        </div>
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="/">HOME</a></li>
+                <li><a href="/sell" class="active">SELL</a></li>
+                <li><a href="/calculator">CALCULATOR</a></li>
+                <li><a href="/aboutus">ABOUT US</a></li>
+                <li><a href="/faq">FAQs</a></li>
+                <li><a href="/contact">CONTACT US</a></li>
+            </ul>
+            <div class="dropdown">
+                <button class="dropbtn">Main Menu</button>
+                <div class="dropdown-content">
+                    <a href="/">HOME</a>
+                    <a href="sell.html">SELL</a>
+                    <a href="/calculator">CALCULATOR</a>
+                    <a href="/aboutus">ABOUT US</a>
+                    <a href="/faq">FAQs</a>
+                    <a href="/contact">CONTACT US</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="sell-form">
+        <h1>Sell your product</h1>
+        <form id="sellForm" action="/sell" method="post" enctype="multipart/form-data">
+            <label for="product_type">Product Type:</label>
+            <select name="product_type" id="product_type" onchange="updateBrands(); showOtherTypeField();">
+                <option value="">Select Product Type</option>
+                <option value="Laptop/TV">Laptop/TV</option>
+                <option value="Earphones/Headphones">Earphones/Headphones</option>
+                <option value="Fridge">Fridge</option>
+                <option value="Cables">Cables</option>
+                <option value="Telecom Equipment">Telecom Equipment</option>
+                <option value="Battery Disposal">Battery Disposal</option>
+                <option value="Other">Other</option>
+            </select>
+            <div id="otherType" style="display:none;">
+                <label for="other_product_type">Please specify:</label>
+                <input type="text" id="other_product_type" name="other_product_type" placeholder="Enter your product type">
+            </div>
+
+            <label for="brand">Brand:</label>
+            <select name="brand" id="brand">
+                <option value="">Select Brand</option>
+                <!-- Add options here -->
+            </select>
+
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" placeholder="Describe your product"></textarea>
+
+            <label for="image">Product Image:</label>
+            <input type="file" name="image" id="image" accept="image/*">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <footer class="footer">
+        <div class="foot1">
+            <a href="/">Home</a> |
+            <a href="/aboutus">About Us</a> |
+            <a href="/faq">FAQ's</a> |
+            <a href="/contact">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        function updateBrands() {
+            const productType = document.getElementById("product_type").value;
+            const brands = document.getElementById("brand");
+            brands.innerHTML = '<option value="">Select Brand</option>';
+            if (productType && brandOptions[productType]) {
+                brandOptions[productType].forEach(brand => {
+                    const option = document.createElement("option");
+                    option.value = brand;
+                    option.textContent = brand;
+                    brands.appendChild(option);
+                });
+            }
+        }
+
+        function showOtherTypeField() {
+            const productType = document.getElementById("product_type").value;
+            const otherTypeField = document.getElementById("otherType");
+            if (productType === "Other") {
+                otherTypeField.style.display = "block";
+            } else {
+                otherTypeField.style.display = "none";
+            }
+        }
+
+        const brandOptions = {
+            "Laptop/TV": ["Lenovo", "Dell", "HP"],
+            "Earphones/Headphones": ["Apple", "Samsung", "Sony"],
+            "Fridge": ["Whirlpool", "LG", "Samsung"],
+            "Cables": ["Generic"],
+            "Telecom Equipment": ["Cisco", "Huawei"],
+            "Battery Disposal": ["Energizer", "Duracell"],
+            "Other": [] // No specific brands for other
+        };
+    </script>
+</body>
+</html>

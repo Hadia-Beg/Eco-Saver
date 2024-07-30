@@ -1,0 +1,75 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url("../images/Capture1.jpeg"); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    width: 700px; /* Increased width for a more rectangular shape */
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for better readability */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#scrapForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Reduced gap for better spacing */
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Reduced gap for better spacing */
+}
+
+.input-group img {
+    width: 80px; /* Reduced width of the images */
+    height: 80px; /* Reduced height of the images */
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 15px; /* Reduced padding for input boxes */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px; /* Font size for readability */
+}
+
+button {
+    padding: 15px 20px; /* Reduced padding for the button */
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Font size for the button text */
+}
+
+button:hover {
+    background-color: #347537;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 15px; /* Reduced padding for the result box */
+    background-color: #e9ecef;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}

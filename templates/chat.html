@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Seller</title>
+    <link rel="stylesheet" href="../static/css/chat.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="left">
+            <img src="../static/images/logo.jpg" alt="logo">
+        </div>
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="/">HOME</a></li>
+                <li><a href="/sell">SELL</a></li>
+                <li><a href="/calculator">CALCULATOR</a></li>
+                <li><a href="/aboutus">ABOUT US</a></li>
+                <li><a href="/faq">FAQs</a></li>
+                <li><a href="/contact">CONTACT US</a></li>
+            </ul>
+            <div class="dropdown">
+                <button class="dropbtn">Main Menu</button>
+                <div class="dropdown-content">
+                    <a href="/">HOME</a>
+                    <a href="sell.html">SELL</a>
+                    <a href="/calculator">CALCULATOR</a>
+                    <a href="/aboutus">ABOUT US</a>
+                    <a href="/faq">FAQs</a>
+                    <a href="/contact">CONTACT US</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="chat-wrapper">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>Chat with Seller</h2>
+            </div>
+            <div class="chat-box" id="chat-box">
+                <!-- Messages will be dynamically added here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Type a message">
+                <button id="send-button">Send</button>
+            </div>
+            <div class="chat-options">
+                <button id="image-upload-button">📷</button>
+                <button id="location-button">📍</button>
+                <input type="file" id="image-upload" accept="image/*" style="display: none;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', fetchMessages);
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+        document.getElementById('image-upload-button').addEventListener('click', () => document.getElementById('image-upload').click());
+        document.getElementById('image-upload').addEventListener('change', uploadImage);
+        document.getElementById('location-button').addEventListener('click', sendLocation);
+
+        function fetchMessages() {
+            fetch('/get_messages')
+                .then(response => response.json())
+                .then(data => {
+                    const chatBox = document.getElementById('chat-box');
+                    chatBox.innerHTML = '';
+                    data.forEach(message => {
+                        const messageElement = document.createElement('div');
+                        messageElement.classList.add('message', 'received');
+                        messageElement.innerText = `${message.timestamp}: ${message.message}`;
+                        chatBox.appendChild(messageElement);
+                    });
+                    scrollToBottom();
+                });
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('message-input');
+            const messageText = messageInput.value.trim();
+
+            if (messageText !== '') {
+                fetch('/send_message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: messageText })
+                }).then(response => {
+                    if (response.ok) {
+                        const messageElement = document.createElement('div');
+                        messageElement.classList.add('message', 'sent');
+                        messageElement.innerText = messageText;
+
+                        document.getElementById('chat-box').appendChild(messageElement);
+                        messageInput.value = '';
+                        scrollToBottom();
+                    }
+                });
+            }
+        }
+
+        function uploadImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageElement = document.createElement('img');
+                    imageElement.src = e.target.result;
+                    const messageElement = document.createElement('div');
+                    messageElement.classList.add('message', 'sent');
+                    messageElement.appendChild(imageElement);
+
+                    document.getElementById('chat-box').appendChild(messageElement);
+                    scrollToBottom();
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function sendLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+
+                    const mapLink = `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
+                    const locationElement = document.createElement('a');
+                    locationElement.href = mapLink;
+                    locationElement.target = '_blank';
+                    locationElement.innerText = `My Location: (${lat}, ${lon})`;
+
+                    const messageElement = document.createElement('div');
+                    messageElement.classList.add('message', 'sent');
+                    messageElement.appendChild(locationElement);
+
+                    document.getElementById('chat-box').appendChild(messageElement);
+                    scrollToBottom();
+                });
+            } else {
+                alert('Geolocation is not supported by your browser.');
+            }
+        }
+
+        function scrollToBottom() {
+            const chatBox = document.getElementById('chat-box');
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+    <footer class="footer">
+        <div class="foot1">
+            <a href="/">Home</a> |
+            <a href="/aboutus">About Us</a> |
+            <a href="/faq">FAQ's</a> |
+            <a href="/contact">Contact</a>
+        </div>
+    </footer>
+</body>
+</html>

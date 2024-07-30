@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("../images/Capture1.jpeg"); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.header {
+    margin-bottom: 0;
+}
+
+.main {
+    width: 84%;
+    max-width: 1200px;
+    margin: 1% auto;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 30px rgba(66, 57, 238, 0.2);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    align-items: center;
+}
+
+.sign-up {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.formgrp {
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.formgrp label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.formgrp input {
+    height: 40px;
+    width: 100%;
+    border: 2px solid #e3e4e8;
+    border-radius: 8px;
+    padding: 0 10px;
+    font-size: 14px;
+    outline: none;
+    box-shadow: 2px 6px 18px rgba(66, 57, 238, 0.3);
+}
+
+.btn a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 175px;
+    height: 40px;
+    color: white;
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 2px 6px 16px rgba(66, 57, 238, 0.9);
+    text-align: center;
+    background-color: black;
+    margin: 8px;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.signup-btn {
+    background-color: rgb(144, 234, 156); /* Green */
+}
+
+.signin-option {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.signin-option a {
+    text-decoration: underline;
+    color: #0056b3;
+    margin-left: 5px;
+}
+
+.image-section {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-section img {
+    width: 100%;
+    max-width: 350px;
+}
+
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sign-up {
+        width: 80%;
+    }
+
+    .image-section {
+        width: 80%;
+    }
+
+    .image-section img {
+        max-width: 250px;
+    }
+}

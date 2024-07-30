@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+</head>
+<link rel="stylesheet" href="../static/css/contact.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/css/navbar.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+<body>
+    <header class="header">
+        <div class="left">
+            <img src="../static/images/logo.jpg" alt="logo">
+        </div>
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="/">HOME</a></li>
+                <li><a href="/sell">SELL</a></li>
+                <li><a href="/calculator">CALCULATOR</a></li>
+                <li><a href="/aboutus">ABOUT US</a></li>
+                <li><a href="/faq">FAQs</a></li>
+                <li><a href="/contact">CONTACT US</a></li>
+            </ul>
+            <div class="dropdown">
+                <button class="dropbtn">Main Menu</button>
+                <div class="dropdown-content">
+                    <a href="/">HOME</a>
+                    <a href="sell.html">SELL</a>
+                    <a href="/calculator">CALCULATOR</a>
+                    <a href="/aboutus">ABOUT US</a>
+                    <a href="/faq">FAQs</a>
+                    <a href="/contact">CONTACT US</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="cont">
+        <div class="contact" id="one">
+            <h1>
+                Contact Us<br>
+            </h1>
+            <h1>
+            <i class="fa fa-envelope fa-fw"> </i> &nbsp;  <a href="https://gmail.com">hadiabeg2002@gmail.com</a>
+            </h1>
+<h1>
+    <i class="fa fa-phone fa-fw"> </i> &nbsp;  +923215195350
+</h1>
+<h1>
+   Location:</h1><h1>UET,Taxila </h1> 
+
+        </div>
+       
+            <div class="contact" id="2">
+                <div class="top">
+                    <h1>Send us a message</h1>
+                </div>
+                <form action="/contact" method="POST">
+                    <div class="formgrp">
+                        <input type="text" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="formgrp">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="formgrp">
+                        <input type="tel" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="mess">
+                        <textarea name="message" rows="9" cols="60" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="foot1">
+            <a href="/">Home</a> |
+            <a href="/aboutus">About Us</a> |
+            <a href="/faq">FAQ's</a> |
+            <a href="/contact">Contact</a>
+        </div>
+    </footer>
+</body>
+
+</html>

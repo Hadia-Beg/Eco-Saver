@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Calculator</title>
+    <link rel="stylesheet" href="../static/css/calculator.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+</head>
+<body>
+    <header class="header">
+        <div class="left">
+            <img src="../static/images/logo.jpg" alt="logo">
+        </div>
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="/">HOME</a></li>
+                <li><a href="/sell">SELL</a></li>
+                <li><a href="/calculator">CALCULATOR</a></li>
+                <li><a href="/aboutus">ABOUT US</a></li>
+                <li><a href="/faq">FAQs</a></li>
+                <li><a href="/contact">CONTACT US</a></li>
+            </ul>
+            <div class="dropdown">
+                <button class="dropbtn">Main Menu</button>
+                <div class="dropdown-content">
+                    <a href="/">HOME</a>
+                    <a href="sell.html">SELL</a>
+                    <a href="/calculator">CALCULATOR</a>
+                    <a href="/aboutus">ABOUT US</a>
+                    <a href="/faq">FAQs</a>
+                    <a href="/contact">CONTACT US</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1>Scrap Calculator</h1>
+        <form id="scrapForm" method="POST" action="/calculator">
+            <div class="input-group">
+                <img src="../static/images/steel.jpeg" alt="Steel">
+                <input type="number" id="steel" name="steel" placeholder="Steel (kg)">
+            </div>
+            <div class="input-group">
+                <img src="../static/images/rubber.png" alt="Rubber">
+                <input type="number" id="rubber" name="rubber" placeholder="Rubber (kg)">
+            </div>
+            <div class="input-group">
+                <img src="../static/images/plastic.png" alt="Plastic">
+                <input type="number" id="plastic" name="plastic" placeholder="Plastic (kg)">
+            </div>
+            <div class="input-group">
+                <img src="../static/images/cardboard.png" alt="Cardboard">
+                <input type="number" id="cardboard" name="cardboard" placeholder="Cardboard (kg)">
+            </div>
+            <div class="input-group">
+                <img src="../static/images/paper.png" alt="Paper">
+                <input type="number" id="paper" name="paper" placeholder="Paper (kg)">
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+        <div id="result">
+            {% if estimated_value is not none %}
+                Estimated Scrap Value: ₨ {{ estimated_value }}
+            {% endif %}
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="foot1">
+            <a href="/">Home</a> |
+            <a href="/aboutus">About Us</a> |
+            <a href="/faq">FAQ's</a> |
+            <a href="/contact">Contact</a>
+        </div>
+    </footer>
+</body>
+</html>

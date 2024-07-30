@@ -1,0 +1,51 @@
+/* General styles */
+body, html {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.fot1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.foot1 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.foot1 a {
+    text-decoration: none;
+    color: rgb(0, 0, 0); /* Replace with the specific purplish color */
+    margin: 0 10px;
+}
+
+/* Media Queries */
+@media (max-width: 342px) {
+    .foot1 a {
+        margin: 0 5px;
+    }
+}

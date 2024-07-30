@@ -1,0 +1,72 @@
+body {
+    background-image: url("../images/Capture1.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    color: #333;
+}
+
+.sell-form {
+    background-color: #ffffff;
+    width: 80%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.sell-form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], select, textarea, input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 100px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#otherType {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sell-form {
+        width: 95%;
+        padding: 10px;
+    }
+}
