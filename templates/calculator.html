@@ -74,5 +74,40 @@
             <a href="/contact">Contact</a>
         </div>
     </footer>
+    <script>
+        function calculateScrapValue() {
+            // Retrieving inputs and setting to 0 if not a valid float
+            var steelWeight = parseFloat(document.getElementById('steel').value) || 0;
+            var rubberWeight = parseFloat(document.getElementById('rubber').value) || 0;
+            var plasticWeight = parseFloat(document.getElementById('plastic').value) || 0;
+            var cardboardWeight = parseFloat(document.getElementById('cardboard').value) || 0;
+            var paperWeight = parseFloat(document.getElementById('paper').value) || 0;
+
+            // Check if any input is negative
+            if (steelWeight < 0 || rubberWeight < 0 || plasticWeight < 0 || cardboardWeight < 0 || paperWeight < 0) {
+                document.getElementById('result').innerHTML = 'Please enter valid positive numbers for weights.';
+                return;
+            }
+
+            // Prices per kg for each material
+            var prices = {
+                'steel': 142.5,
+                'rubber': 114,
+                'plastic': 85.5,
+                'cardboard': 28.5,
+                'paper': 42.75
+            };
+
+            // Calculating total value
+            var estimatedValue = (steelWeight * prices['steel']) + 
+                                 (rubberWeight * prices['rubber']) +
+                                 (plasticWeight * prices['plastic']) +
+                                 (cardboardWeight * prices['cardboard']) +
+                                 (paperWeight * prices['paper']);
+
+            // Displaying result in PKR
+            document.getElementById('result').innerHTML = 'Estimated Scrap Value: ₨ ' + estimatedValue.toFixed(2);
+        }
+    </script>
 </body>
 </html>
